@@ -1,0 +1,55 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+name: Java CI with Maven on Pull
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "actions"]
+  schedule:
+    - cron: "0 12 * * 1-5"
+    
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    - name: Set up JDK 21
+      uses: actions/setup-java@7a6d8a8234af8eb26422e24e3006232cccaa061b # v4.6.0
+      with:
+        java-version: 21
+        distribution: 'temurin'
+        cache: maven
+    - name: Compile App and Tests
+      run: |
+           mvn -B compiler:compile
+           mvn -B compiler:testCompile
+    - name: Create Server and Deploy App
+      run: |
+           mvn -B liberty:create
+           mvn -B liberty:deploy
+    - name: Start Server
+      run: mvn -B liberty:start
+    - name: Run Integration Tests
+      run: mvn -B failsafe:integration-test
+    - name: Stop Server
+      run: mvn -B liberty:stop
+    - name: Verify Integration Test Results
+      run: mvn -B failsafe:verify
+    - name: Archive Liberty logs
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: liberty-logs
+        path: target/liberty/wlp/usr/servers/DataImplementationsServer/logs/
+        retention-days: 1
+
+
+
