@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
 
+    <include location="liberty-data.xml"/>
+
     <!-- Enable features -->
     <featureManager>
-        <feature>jakartaee-10.0</feature>
+        <feature>restfulWS-4.0</feature>
+		<feature>cdi-4.1</feature>
     </featureManager>
 
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
     <!-- Configures the application on a specified context root -->
-    <webApplication contextRoot="/data-implementations-sample" location="data-implementations-sample.war" />
+    <webApplication location="data-implementations-sample.war" contextRoot="/"/>
+
+    <logging traceSpecification="*=info:data=all:persistenceService=all"/>
 
 </server>
