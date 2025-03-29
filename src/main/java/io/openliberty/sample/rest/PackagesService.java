@@ -28,7 +28,7 @@ public class PackagesService {
     public String get() {
         StringBuilder sb = new StringBuilder();
         packages.findAll().forEach(p -> {
-            sb.append(p.id() + ": " +p.destination()).append(System.lineSeparator());
+            sb.append(p.id + ": " +p.destination).append(System.lineSeparator());
         });
         return sb.toString();
     }
