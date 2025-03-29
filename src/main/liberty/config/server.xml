@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
 
-    <include location="liberty-data.xml"/>
+    <!--<include location="liberty-data.xml"/>-->
+    <!--<include location="hibernate-data.xml"/>-->
 
     <!-- Enable features -->
     <featureManager>
@@ -12,8 +13,30 @@
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
 
     <!-- Configures the application on a specified context root -->
-    <webApplication location="data-implementations-sample.war" contextRoot="/"/>
+    <webApplication location="data-implementations-sample.war" contextRoot="/">
+        <classloader commonLibraryRef="hibernate, derby"/>
+    </webApplication>
 
-    <logging traceSpecification="*=info:data=all:persistenceService=all"/>
+    <!--TODO remove-->
+    <logging traceSpecification="*=info:data=all:org.hibernate=all:persistenceService=all"/>
+
+
+    <featureManager>
+        <feature>dataContainer-1.0</feature>
+        <feature>persistenceContainer-3.2</feature>
+    </featureManager>
+
+    <library id="derby">
+		<fileset dir="${server.config.dir}/lib/derby" includes="*.jar"/>
+	</library>
+
+    <library id="hibernate">
+    	<fileset dir="${server.config.dir}/lib/hibernate" includes="*.jar"/>
+	</library>
+
+	<dataSource id="DefaultDataSource">
+        <jdbcDriver libraryRef="derby"/>
+        <properties.derby.embedded databaseName="memory:testDB" createDatabase="create"/>
+    </dataSource>
 
 </server>
