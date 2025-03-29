@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>data-1.0</feature>
+        <feature>persistence-3.2</feature>
+    </featureManager>
+
+    <library id="derby">
+		<fileset dir="${server.config.dir}/lib/derby" includes="*.jar"/>
+	</library>
+
+	<dataSource id="DefaultDataSource" jndiName="jdbc/datadb">
+        <jdbcDriver libraryRef="derby"/>
+        <properties.derby.embedded databaseName="memory:testDB" createDatabase="create"/>
+    </dataSource>
+    
+
+</server>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>dataContainer-1.0</feature>
+        <feature>persistenceContainer-3.2</feature>
+    </featureManager>
+
+    <library id="derby">
+		<fileset dir="${server.config.dir}/lib/derby" includes="*.jar"/>
+	</library>
+
+    <library id="hibernate">
+    	<fileset dir="${server.config.dir}/lib/hibernate" includes="*.jar"/>
+	</library>
+
+	<dataSource id="DefaultDataSource" jndiName="jdbc/datadb">
+        <jdbcDriver libraryRef="derby"/>
+        <properties.derby.embedded databaseName="memory:testDB" createDatabase="create"/>
+    </dataSource>
+
+</server>
