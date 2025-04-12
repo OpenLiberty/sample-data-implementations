@@ -21,6 +21,7 @@
     <logging traceSpecification="*=info:data=all:org.hibernate=all:persistenceService=all"/>
 
 
+
     <featureManager>
         <feature>dataContainer-1.0</feature>
         <feature>persistenceContainer-3.2</feature>
@@ -30,9 +31,11 @@
 		<fileset dir="${server.config.dir}/lib/derby" includes="*.jar"/>
 	</library>
 
+
     <library id="hibernate">
     	<fileset dir="${server.config.dir}/lib/hibernate" includes="*.jar"/>
 	</library>
+
 
 	<dataSource id="DefaultDataSource">
         <jdbcDriver libraryRef="derby"/>

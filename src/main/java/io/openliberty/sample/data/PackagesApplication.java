@@ -1,4 +1,4 @@
-package io.openliberty.sample.rest;
+package io.openliberty.sample.data;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

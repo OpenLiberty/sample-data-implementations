@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 public class Package {
     
     @Id
-    public int id;
+    public Integer id;
 
     public String destination;
 
@@ -15,7 +15,7 @@ public class Package {
 
     }
 
-    public Package(int id, String destination) {
+    public Package(Integer id, String destination) {
         this.id = id;
         this.destination = destination;
     }

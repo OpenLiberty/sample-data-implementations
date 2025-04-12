@@ -1,9 +1,9 @@
-package io.openliberty.sample.rest;
+package io.openliberty.sample.data;
 
-import io.openliberty.sample.data.Packages;
-import io.openliberty.sample.data.Package;
+import jakarta.annotation.Resource;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.UserTransaction;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -16,6 +16,9 @@ public class PackagesService {
     
     @Inject
     Packages packages;
+
+    @Resource
+    UserTransaction tran;
 
     @GET //For testing eventually change to POST
     @Path("/{id}") 
