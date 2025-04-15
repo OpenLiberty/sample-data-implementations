@@ -15,7 +15,6 @@
             <property name="hibernate.enhancer.enableLazyInitialization" value="false"/>
             
             <property name="hibernate.dialect" value="org.hibernate.community.dialect.DerbyDialect"/>
-            <property name="hibernate.archive.autodetection" value="class, hbm"/>
         
         </properties>
     </persistence-unit>
