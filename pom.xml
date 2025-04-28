@@ -37,6 +37,7 @@
         </dependency>
         <!--By defining the Hibernate dependencies here, the liberty maven plugin will
             also pull the transitive dependencies-->
+            <!--
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -60,6 +61,7 @@
                 </exclusion>
             </exclusions> 
         </dependency>
+
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-processor</artifactId>
@@ -88,6 +90,7 @@
             <artifactId>hibernate-community-dialects</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+    -->
     </dependencies>
 
     <build>
@@ -143,9 +146,10 @@
                                 <artifactId>derbyshared</artifactId>
                                 <version>10.16.1.1</version>
                             </dependency>
+                        
                         </dependencyGroup>
-                            <dependencyGroup>
-                            <!-- Relative to server config directory -->
+                        <!--
+                        <dependencyGroup>
                             <location>lib/hibernate</location>
                             <dependency>
                                 <groupId>org.hibernate.orm</groupId>
@@ -163,6 +167,7 @@
                                 <version>${hibernate.version}</version>
                             </dependency>
                         </dependencyGroup>
+                        -->
                     </copyDependencies>
                 </configuration>
             </plugin>
@@ -172,11 +177,13 @@
                 <version>3.6.1</version>
                 <configuration>
                     <annotationProcessorPaths>
+                        <!--
                         <annotationProcessorPath>
                             <groupId>org.hibernate.orm</groupId>
                             <artifactId>hibernate-processor</artifactId>
                             <version>${hibernate.version}</version>
                         </annotationProcessorPath>
+                    -->
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
