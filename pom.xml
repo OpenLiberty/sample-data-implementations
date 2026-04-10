@@ -19,7 +19,7 @@
         <https.port>9443</https.port>
         <liberty.var.app.context.root>/</liberty.var.app.context.root>
 
-        <hibernate.version>7.0.0.Beta1</hibernate.version>
+        <hibernate.version>7.0.0.CR1</hibernate.version>
     </properties>
 
     <dependencies>
