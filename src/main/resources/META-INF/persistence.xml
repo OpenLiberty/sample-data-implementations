@@ -14,7 +14,7 @@
             <property name="hibernate.enhancer.enableDirtyTracking" value="false"/>
             <property name="hibernate.enhancer.enableLazyInitialization" value="false"/>
             
-            <property name="hibernate.dialect" value="org.hibernate.community.dialect.DerbyDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
         
         </properties>
     </persistence-unit>

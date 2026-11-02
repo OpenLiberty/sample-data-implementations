@@ -14,7 +14,7 @@
 
     <!-- Configures the application on a specified context root -->
     <webApplication location="data-implementations-sample.war" contextRoot="/">
-        <classloader commonLibraryRef="hibernate, derby"/>
+        <classloader commonLibraryRef="hibernate, h2"/>
     </webApplication>
 
     <!--TODO remove-->
